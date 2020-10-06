@@ -5,7 +5,7 @@
 
 =============================================================
 
- ![doc](https://github.com/leosp1983/zabbix/blob/main/doc/ansible.png)
+ ![doc](https://github.com/leosp1983/zabbix-for-windows/blob/main/doc/ansible.png)
 
 **Funções**
 -------------
