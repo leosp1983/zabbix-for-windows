@@ -1,0 +1,26 @@
+- win_file:
+    path: C:\somepath
+    state: directory
+
+- win_get_url:
+    url: "{{ url }}"
+    dest: C:\somepath
+
+- win_find:
+    paths: C:\somepath\
+  register: zip
+
+- debug:
+    msg: "{{ zip.files | map(attribute='filename') | list }}"
+  register: file
+
+- win_unzip:
+    src: C:\somepath\{{ file.msg[0] }}
+    dest: C:\somepath
+
+- win_file:
+    path: "{{ item }}"
+    state: absent
+  with_items:
+    - C:\somepath\{{ file.msg[0] }}
+    - C:\somepath\conf\zabbix_agentd.conf

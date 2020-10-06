@@ -1,0 +1,4 @@
+- win_template: 
+    src: zabbix_agentd.conf.j2
+    dest: \\{{ansible_hostname}}\somepath\conf\zabbix_agentd.conf
+  ignore_errors: yes

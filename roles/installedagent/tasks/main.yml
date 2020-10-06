@@ -1,0 +1,11 @@
+- win_template: 
+    src: zabbix_agentd.conf.j2
+    dest: \\{{ansible_hostname}}\somepath\etc\zabbix_agentd.conf
+  ignore_errors: yes
+
+- win_service:
+    name: "{{ item }}"
+    state: restarted
+  with_items:
+    - "Zabbix Agent" 
+  ignore_errors: yes

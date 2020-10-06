@@ -1,0 +1,50 @@
+- hosts: "{{ group }}"
+  gather_facts: yes
+  vars:
+    ansible_connection: winrm
+    ansible_winrm_server_cert_validation: ignore
+
+  tasks:
+
+  - name: Validando os servidores com Zabbix instalado
+    win_stat:
+      path: C:\somepath
+    register: folder_info
+
+  - name: Criando o diretório do agent do zabbix
+    include_role:
+      name: directory
+    when: folder_info.stat.exists == false
+
+  - name: Criando o share do diretório do zabbix 
+    include_role:
+      name: share
+
+  - name: Distribuindo o agente do zabbix no parque Windows 
+    include_role:
+      name: robocopy
+    when: folder_info.stat.exists == false
+
+  - name: Distribuindo o agente do zabbix no parque Windows 
+    include_role:
+      name: download
+    when: folder_info.stat.exists == false
+
+  - name: Distribuindo o template zabbix.conf no parque Windows 
+    include_role:
+      name: conf
+    when: folder_info.stat.exists == false
+
+  - name: Instalando, iniciando e validado o status do seviço
+    include_role:
+      name: install
+    when: folder_info.stat.exists == false
+
+  - name: Ajuste no arquivo zabbix_agentd.conf e restat do serviço
+    include_role:
+      name: installedagent
+    when: folder_info.stat.exists == true
+
+  - name: Adicionando os hosts no Zabbix server
+    include_role:
+      name: zabbix

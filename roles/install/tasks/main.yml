@@ -1,0 +1,16 @@
+- win_shell: |
+    C:\somepath\bin\zabbix_agentd.exe --config C:\somepath\conf\zabbix_agentd.conf --install
+  ignore_errors: yes
+
+- win_shell: |
+    C:\somepath\bin\zabbix_agentd.exe --start
+  ignore_errors: yes
+
+- win_shell: |
+    get-service 'Zabbix Agent'
+  register: zabbix
+  ignore_errors: yes
+
+- debug:
+    msg: "{{ zabbix.stdout_lines }}"
+  ignore_errors: yes

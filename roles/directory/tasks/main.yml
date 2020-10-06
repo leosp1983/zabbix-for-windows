@@ -1,0 +1,4 @@
+- win_file:
+    path: C:\somepath
+    state: directory
+  ignore_errors: yes

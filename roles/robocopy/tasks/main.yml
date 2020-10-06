@@ -1,0 +1,10 @@
+- win_robocopy:
+    src: \\network share\zabbix\
+    dest: \\{{ansible_hostname}}\somepath
+    recurse: yes
+  become: yes
+  become_method: runas
+  become_user: "{{ user }}"
+  vars:
+    ansible_become_password: "{{ pass }}"
+  ignore_errors: yes

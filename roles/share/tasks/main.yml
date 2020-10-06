@@ -1,0 +1,13 @@
+- win_share:
+    name: zabbix
+    description: share zabbix
+    path: C:\somepath
+    list: yes
+    full: Administrators
+    read: Administrators
+  ignore_errors: yes
+  when: ansible_os_name.find ("2012") != -1 or ansible_os_name.find ("2016") != -1 or ansible_os_name.find ("2019") != -1
+
+- win_shell: |
+    NET SHARE zabbix=C:\somepath /GRANT:Administrator,FULL
+  when: ansible_os_name.find ("2008") != -1

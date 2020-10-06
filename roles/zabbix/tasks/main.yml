@@ -1,0 +1,26 @@
+- local_action:
+    module: zabbix_host
+    server_url: http://zabbixserver/zabbix
+    login_user: "{{ user }}"
+    login_password: "{{ pass }}"
+    host_name: "{{ ansible_fqdn }}"
+    visible_name: "{{ ansible_fqdn }}"
+    host_groups:
+      - "Templates/Operating systems"
+      - "Windows"
+    link_templates:
+      - "Template OS Windows by Zabbix agent"
+    status: enabled
+    state: present
+    inventory_mode: automatic
+    interfaces:
+      - type: agent
+        main: 1
+        useip: 1
+        ip: "{{ ansible_ip_addresses [0] }}"
+        dns: "{{ ansible_fqdn }}"
+        port: 10050
+  delegate_to: locahost 
+  vars:
+      ansible_connection: local
+  ignore_errors: yes
