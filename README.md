@@ -3,9 +3,9 @@
 
 - Instalar o agent do Zabbix nos servidores Windows 
 
-========================================================
+====================================================
 
- ![doc](https://github.com/leosp1983/zabbix-for-windows/blob/main/doc/ansible.png)
+![doc](https://github.com/leosp1983/zabbix-for-windows/blob/main/doc/ansible.png)
 
 **Funções**
 -------------
