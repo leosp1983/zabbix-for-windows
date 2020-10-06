@@ -31,4 +31,4 @@
 - [X] Download
 - [x] Network share
 
-* Verifique qual opção melhor se adequa ao seu parque de servidores e ajuste as tasks no arquivo zabbix.yml
+* Verifique qual opção melhor se adequa ao ambiente e ajuste as tasks no arquivo zabbix.yml
