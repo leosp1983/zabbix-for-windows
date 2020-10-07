@@ -25,7 +25,7 @@
 - [X] Windows server 2016;
 - [X] Windows server 2019.
 
-**Opção para distribuição do agent**
+**Opções para distribuição do agent**
 -------------
 
 - [X] Download
